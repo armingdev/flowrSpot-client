@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {CoreModule} from './core/core.module';
+import {HttpClientModule} from '@angular/common/http';
+import {ApiModule} from './generated/api/api.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import {CoreModule} from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule,
+    ApiModule.forRoot({rootUrl: 'https://flowrspot-api.herokuapp.com'}),
   ],
   providers: [],
   bootstrap: [AppComponent]
