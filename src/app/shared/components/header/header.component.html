@@ -11,10 +11,62 @@
       <a class="nav-link" routerLink="/favorites">Favorites</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/login">Login</a>
+      <a class="nav-link" (click)="openModalWithClass(template)">Login</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/sign-in">New Account</a>
+      <a class="nav-link" (click)="openModalWithClass(template2)">New Account</a>
     </li>
   </ul>
 </nav>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Welcome Back</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <input type="email" class="form-control" formControlName="street" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Login to your Account</button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #template2>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Create an Account</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="First name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Last name">
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Date of Birth">
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-control" id="test2" aria-describedby="emailHelp" placeholder="Email Address">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="test" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Create Account</button>
+    </form>
+  </div>
+</ng-template>
