@@ -31,6 +31,11 @@ export class HeaderComponent implements OnInit {
       Object.assign({}, { class: 'modal-dialog-centered' })
     );
   }
+
+  test() {
+    console.log(this.registerForm);
+    console.log(this.loginForm);
+  }
   ngOnInit() {
   }
 

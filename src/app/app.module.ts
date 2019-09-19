@@ -8,6 +8,8 @@ import {CoreModule} from './core/core.module';
 import {HttpClientModule} from '@angular/common/http';
 import {ApiModule} from './generated/api/api.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     ApiModule.forRoot({rootUrl: 'https://flowrspot-api.herokuapp.com'}),
     ModalModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
