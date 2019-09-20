@@ -1,6 +1,7 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
+import {AuthService} from '../../../core/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class HeaderComponent implements OnInit {
 
   modalRef: BsModalRef;
-  constructor(private modalService: BsModalService) {}
+  constructor(private modalService: BsModalService, private authService: AuthService) {}
 
   loginForm = new FormGroup({
     email: new FormControl(''),
@@ -32,11 +33,31 @@ export class HeaderComponent implements OnInit {
     );
   }
 
-  test() {
-    console.log(this.registerForm);
-    console.log(this.loginForm);
+  registerUser() {
+    console.log(this.registerForm.value);
+    this.authService.register(this.registerForm.value).subscribe(data => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  logIn() {
+    this.authService.login(this.loginForm.value).subscribe(data => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  logOut() {
+    this.authService.logout();
+  }
+
+  getProfile() {
+
   }
   ngOnInit() {
-  }
+    }
 
 }
