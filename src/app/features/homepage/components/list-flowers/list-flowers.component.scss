@@ -1,5 +1,23 @@
 .flower-boxes {
   width: 250px;
-  height: 400px;
-  flex-wrap: wrap;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px;
+  border-radius: 1px;
+  border: #949ea0 1px solid;
+}
+
+.favorite {
+  background-color: #eaaca3;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 7px;
+}
+
+.non-favorite {
+  background-color: #ffffff;
+  color: #d4d8d9;
+  border-radius: 50%;
+  padding: 7px;
 }

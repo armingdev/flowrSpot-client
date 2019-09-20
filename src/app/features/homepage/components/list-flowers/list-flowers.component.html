@@ -1,8 +1,23 @@
 <div class="container">
-  <div class="flower-boxes d-flex flex-row">
-    <div class="p-2" *ngFor="let flower of flowers">
-      <img src="{{flower.profile_picture}}" alt="">
-      {{flower.name}}
+  <div class="row">
+    <div class="flower-boxes d-flex discover" *ngFor="let flower of flowers" [ngStyle]="{'background-image':'url(' + flower.profile_picture + ')'}">
+      <div class="d-flex flex-row-reverse">
+        <div class="col">
+          <i class="fas fa-star" [ngClass]="{'favorite': flower.favorite===true, 'non-favorite': flower.favorite===false}"></i>
+        </div>
+      </div>
+      <div class="row align-items-end justify-content-center">
+        <div class="row">
+          <div class="col">
+            Test
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Test
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

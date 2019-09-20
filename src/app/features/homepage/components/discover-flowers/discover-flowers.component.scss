@@ -1,8 +1,15 @@
 .discover {
   height: 500px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url("/assets/img/homepage_discover_bckg.jpg");
 }
 
-h1, h4 {
+h1 {
   color: white;
+}
+
+p {
+  color: #949ea0;
 }

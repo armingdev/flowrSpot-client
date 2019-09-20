@@ -4,19 +4,19 @@
   </a>
   <ul class="nav justify-content-end">
     <li class="nav-item">
-      <a class="nav-link active" routerLink="/flowers">Flowers</a>
+      <a class="nav-link menu-link" routerLink="/flowers">Flowers</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/latest-sightings">Latest Sightings</a>
+      <a class="nav-link menu-link" routerLink="/latest-sightings">Latest Sightings</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="/favorites">Favorites</a>
+      <a class="nav-link menu-link" routerLink="/favorites">Favorites</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" (click)="openModalWithClass(template)">Login</a>
+      <a class="nav-link login-button" (click)="openModalWithClass(template)">Login</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" (click)="openModalWithClass(template2)">New Account</a>
+      <a class="nav-link sign-in-button" (click)="openModalWithClass(template2)">New Account</a>
     </li>
   </ul>
 </nav>
@@ -36,7 +36,7 @@
       <div class="form-group">
         <input type="password" class="form-control" formControlName="password" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="test()">Login to your Account</button>
+      <button type="submit" class="btn btn-primary btn-lg btn-block custom" (click)="test()">Login to your Account</button>
     </form>
   </div>
 </ng-template>
@@ -68,7 +68,7 @@
       <div class="form-group">
         <input type="password" class="form-control" formControlName="password" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="test()">Create Account</button>
+      <button type="submit" class="btn btn-primary btn-lg btn-block custom" (click)="test()">Create Account</button>
     </form>
   </div>
 </ng-template>
