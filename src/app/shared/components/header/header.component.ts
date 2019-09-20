@@ -2,6 +2,7 @@ import {Component, OnInit, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../core/auth/services/auth.service';
+import {User} from '../../../generated/api/models/user';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,10 @@ import {AuthService} from '../../../core/auth/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  loggedIn: boolean = this.authService.isLogged;
+  currentUser: User;
   modalRef: BsModalRef;
+
   constructor(private modalService: BsModalService, private authService: AuthService) {}
 
   loginForm = new FormGroup({
@@ -34,7 +38,6 @@ export class HeaderComponent implements OnInit {
   }
 
   registerUser() {
-    console.log(this.registerForm.value);
     this.authService.register(this.registerForm.value).subscribe(data => {
       console.log(data);
     }, error => {
@@ -54,10 +57,13 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
   }
 
-  getProfile() {
-
+  getCurrentUser() {
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
   }
   ngOnInit() {
+    if (this.loggedIn) {
+      this.getCurrentUser();
     }
+  }
 
 }

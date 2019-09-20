@@ -3,18 +3,25 @@
     <div class="flower-boxes d-flex discover" *ngFor="let flower of flowers" [ngStyle]="{'background-image':'url(' + flower.profile_picture + ')'}">
       <div class="d-flex flex-row-reverse">
         <div class="col">
-          <i class="fas fa-star" [ngClass]="{'favorite': flower.favorite===true, 'non-favorite': flower.favorite===false}"></i>
+          <i class="fas fa-star" *ngIf="loggedIn" [ngClass]="{'favorite': flower.favorite===true, 'non-favorite': flower.favorite===false}" (click)="favoriteFlower(flower.id)"></i>
         </div>
       </div>
       <div class="row align-items-end justify-content-center">
         <div class="row">
           <div class="col">
-            Test
+            <div class="row">
+              {{flower.name}}
+            </div>
+            <div class="row">
+              {{flower.latin_name}}
+            </div>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            Test
+            <div class="row">
+              {{flower.sightings}}
+            </div>
           </div>
         </div>
       </div>

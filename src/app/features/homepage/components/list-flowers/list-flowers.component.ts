@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FlowerService} from '../../../../generated/api/services';
+import {FavoriteService, FlowerService} from '../../../../generated/api/services';
 import {Flower} from '../../../../generated/api/models';
+import {AuthService} from '../../../../core/auth/services/auth.service';
 
 @Component({
   selector: 'app-list-flowers',
@@ -9,16 +10,23 @@ import {Flower} from '../../../../generated/api/models';
 })
 export class ListFlowersComponent implements OnInit {
   flowers: Flower[];
+  loggedIn: boolean = this.authService.isLogged;
 
-  constructor(private flowerService: FlowerService) { }
+  constructor(private flowerService: FlowerService, private favoriteService: FavoriteService, private authService: AuthService) { }
 
   ngOnInit() {
     this.loadFlowers();
   }
 
+
   loadFlowers() {
     this.flowerService.getApiV1Flowers(1).subscribe(data => {
       this.flowers = data.flowers;
+    });
+  }
+
+  favoriteFlower(flowerId) {
+    this.favoriteService.postApiV1FlowersFlowerIdFavorites(flowerId).subscribe(data => {
     });
   }
 }
