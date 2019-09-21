@@ -1,8 +1,10 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
-import {FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../core/auth/services/auth.service';
 import {User} from '../../../generated/api/models/user';
+import {LoginModalComponent} from '../../modals/login-modal/login-modal.component';
+import {RegisterModalComponent} from '../../modals/register-modal/register-modal.component';
+import {ProfileModalComponent} from '../../modals/profile-modal/profile-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -10,43 +12,22 @@ import {User} from '../../../generated/api/models/user';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
   loggedIn: boolean = this.authService.isLogged;
   currentUser: User;
   modalRef: BsModalRef;
 
   constructor(private modalService: BsModalService, private authService: AuthService) {}
 
-  loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-  });
-
-  registerForm = new FormGroup({
-    first_name: new FormControl(''),
-    last_name: new FormControl(''),
-    date_of_birth: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-  });
-
-  openModalWithClass(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(
-      template,
-      Object.assign({}, { class: 'modal-dialog-centered' })
-    );
+  openLoginModal() {
+    this.modalRef = this.modalService.show(LoginModalComponent, Object.assign({}, { class: 'modal-dialog-centered' }));
   }
 
-  registerUser() {
-    this.authService.register(this.registerForm.value).subscribe(data => {
-    }, error => {
-    });
+  openRegisterModal() {
+    this.modalRef = this.modalService.show(RegisterModalComponent, Object.assign({}, { class: 'modal-dialog-centered' }));
   }
 
-  logIn() {
-    this.authService.login(this.loginForm.value).subscribe(data => {
-    }, error => {
-    });
+  openProfileModal() {
+    this.modalRef = this.modalService.show(ProfileModalComponent, Object.assign({}, { class: 'modal-dialog-centered' }));
   }
 
   logOut() {

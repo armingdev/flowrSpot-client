@@ -13,70 +13,13 @@
       <a class="nav-link menu-link" routerLink="/favorites">Favorites</a>
     </li>
     <li class="nav-item" *ngIf="!loggedIn">
-      <a class="nav-link login-button" (click)="openModalWithClass(template)">Login</a>
+      <a class="nav-link login-button" (click)="openLoginModal()">Login</a>
     </li>
     <li class="nav-item" *ngIf="!loggedIn">
-      <a class="nav-link sign-in-button" (click)="openModalWithClass(template2)">New Account</a>
+      <a class="nav-link sign-in-button" (click)="openRegisterModal()">New Account</a>
     </li>
     <li class="nav-item" *ngIf="loggedIn">
       <a class="nav-link menu-link">{{currentUser.user.first_name}} {{currentUser.user.last_name}} <span><i class="fas fa-user-circle"></i></span></a>
     </li>
   </ul>
 </nav>
-
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Welcome Back</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="loginForm">
-      <div class="form-group">
-        <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" formControlName="password" placeholder="Password">
-      </div>
-      <button type="submit" class="btn btn-primary btn-lg btn-block custom" (click)="logIn()">Login to your Account</button>
-    </form>
-  </div>
-</ng-template>
-
-<ng-template #template2>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Create an Account</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="registerForm">
-      <div class="row">
-        <div class="col">
-          <input type="text" class="form-control" formControlName="first_name" placeholder="First name">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" formControlName="last_name" placeholder="Last name">
-        </div>
-      </div>
-      <br>
-      <div class="form-group">
-        <input type="text"
-               placeholder="Date of Birth"
-               formControlName="date_of_birth"
-               class="form-control"
-               bsDatepicker
-               [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-default'}">
-      </div>
-      <div class="form-group">
-        <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="email" placeholder="Email Address">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" formControlName="password" placeholder="Password">
-      </div>
-      <button type="submit" class="btn btn-primary btn-lg btn-block custom" (click)="registerUser()">Create Account</button>
-    </form>
-  </div>
-</ng-template>
