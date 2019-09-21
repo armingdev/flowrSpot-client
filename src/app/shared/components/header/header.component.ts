@@ -39,17 +39,13 @@ export class HeaderComponent implements OnInit {
 
   registerUser() {
     this.authService.register(this.registerForm.value).subscribe(data => {
-      console.log(data);
     }, error => {
-      console.log(error);
     });
   }
 
   logIn() {
     this.authService.login(this.loginForm.value).subscribe(data => {
-      console.log(data);
     }, error => {
-      console.log(error);
     });
   }
 
