@@ -13,6 +13,7 @@
   color: #ffffff;
   border-radius: 50%;
   padding: 7px;
+  float: right;
 }
 
 .non-favorite {
@@ -20,4 +21,30 @@
   color: #d4d8d9;
   border-radius: 50%;
   padding: 7px;
+  float: right;
+}
+.favorite-container {
+  padding: 5px;
+  height: 40px;
+}
+.content-container {
+  bottom: 0;
+  height: 85%;
+  width: 100%;
+  margin: 0;
+  color: white;
+}
+.sightings {
+  border-radius: 20px;
+  background-color: black;
+  opacity: .7;
+  padding: 3px;
+  margin: 0 auto;
+  max-width: 80%;
+  width: 60%;
+}
+.latin-name {
+  font-style: italic;
+  font-size: 12px;
+  opacity: .7;
 }
