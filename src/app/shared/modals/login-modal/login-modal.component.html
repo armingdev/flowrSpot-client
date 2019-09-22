@@ -9,6 +9,9 @@
     <alert *ngIf="loginSuccess" type="success">
       <strong>Congratulations!</strong> You have successfully logged into FlowrSpot!
     </alert>
+  <alert *ngIf="loginError" type="danger">
+    <strong>Login failed:</strong> {{loginError}}
+  </alert>
     <form [formGroup]="loginForm" *ngIf="!loginSuccess">
       <div class="form-group">
         <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">

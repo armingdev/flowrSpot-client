@@ -11,6 +11,7 @@ import {LoginModalComponent} from '../login-modal/login-modal.component';
 })
 export class RegisterModalComponent implements OnInit {
   registerSuccess = false;
+  registrationError;
 
   constructor(private authService: AuthService, private modalRef: BsModalRef, private modalService: BsModalService) { }
 
@@ -33,6 +34,7 @@ export class RegisterModalComponent implements OnInit {
     this.authService.register(this.registerForm.value).subscribe(data => {
       this.registerSuccess = true;
     }, error => {
+      this.registrationError = error.error.error;
     });
   }
 }

@@ -8,6 +8,9 @@
     <alert *ngIf="registerSuccess" type="success">
       <strong>Congratulations!</strong> You have successfully signed up for FlowrSpot!
     </alert>
+  <alert *ngIf="registrationError" type="danger">
+    <strong>Registration failed:</strong> {{registrationError}}
+  </alert>
     <form [formGroup]="registerForm" *ngIf="!registerSuccess">
       <div class="row">
         <div class="col">
