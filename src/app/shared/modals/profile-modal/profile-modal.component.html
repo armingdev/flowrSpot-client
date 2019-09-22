@@ -1,1 +1,54 @@
-<p>profile-modal works!</p>
+<div class="modal-body">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-1"><i class="fas fa-3x fa-user-circle"></i></div>
+        <div class="col info-header">
+          <div class="row">
+            <span>{{userInfo.user.first_name}} {{userInfo.user.last_name}}</span>
+          </div>
+          <div class="row">
+            <span class="labels">{{userInfo.sightings.length}} sightings</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card user-data">
+          <div class="card-body">
+            <h5 class="card-title labels">First name</h5>
+            <p class="card-text">{{userInfo.user.first_name}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card user-data">
+          <div class="card-body">
+            <h5 class="card-title labels">Last name</h5>
+            <p class="card-text">{{userInfo.user.last_name}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card user-data">
+          <div class="card-body">
+            <h5 class="card-title labels">Date of Birth</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card user-data">
+          <div class="card-body">
+            <h5 class="card-title labels">Email</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn btn-primary custom" (click)="logOut()">
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

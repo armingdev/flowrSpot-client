@@ -30,10 +30,6 @@ export class HeaderComponent implements OnInit {
     this.modalRef = this.modalService.show(ProfileModalComponent, Object.assign({}, { class: 'modal-dialog-centered' }));
   }
 
-  logOut() {
-    this.authService.logout();
-  }
-
   getCurrentUser() {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
   }

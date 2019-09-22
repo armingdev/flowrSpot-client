@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../core/auth/services/auth.service';
-import {BsModalRef} from 'ngx-bootstrap';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {ProfileModalComponent} from '../profile-modal/profile-modal.component';
 
 @Component({
   selector: 'app-login-modal',
@@ -9,9 +10,9 @@ import {BsModalRef} from 'ngx-bootstrap';
   styleUrls: ['./login-modal.component.scss']
 })
 export class LoginModalComponent implements OnInit {
-  modalRef: BsModalRef;
+  loginSuccess = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private modalService: BsModalService, private authService: AuthService, private modalRef: BsModalRef) {}
 
   loginForm = new FormGroup({
     email: new FormControl(''),
@@ -23,7 +24,12 @@ export class LoginModalComponent implements OnInit {
 
   logIn() {
     this.authService.login(this.loginForm.value).subscribe(data => {
+      this.loginSuccess = true;
     }, error => {
     });
+  }
+
+  openProfileModal() {
+    this.modalRef = this.modalService.show(ProfileModalComponent, Object.assign({}, { class: 'modal-dialog-centered' }));
   }
 }

@@ -5,30 +5,38 @@
   </button>
 </div>
 <div class="modal-body">
-  <form [formGroup]="registerForm">
-    <div class="row">
-      <div class="col">
-        <input type="text" class="form-control" formControlName="first_name" placeholder="First name">
+    <alert *ngIf="registerSuccess" type="success">
+      <strong>Congratulations!</strong> You have successfully signed up for FlowrSpot!
+    </alert>
+    <form [formGroup]="registerForm" *ngIf="!registerSuccess">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" formControlName="first_name" placeholder="First name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" formControlName="last_name" placeholder="Last name">
+        </div>
       </div>
-      <div class="col">
-        <input type="text" class="form-control" formControlName="last_name" placeholder="Last name">
+      <br>
+      <div class="form-group">
+        <input type="text"
+               placeholder="Date of Birth"
+               formControlName="date_of_birth"
+               class="form-control"
+               bsDatepicker
+               [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-default'}">
       </div>
-    </div>
-    <br>
-    <div class="form-group">
-      <input type="text"
-             placeholder="Date of Birth"
-             formControlName="date_of_birth"
-             class="form-control"
-             bsDatepicker
-             [bsConfig]="{ isAnimated: true, dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-default'}">
-    </div>
-    <div class="form-group">
-      <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="email" placeholder="Email Address">
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" formControlName="password" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-primary btn-lg btn-block custom" (click)="registerUser()">Create Account</button>
-  </form>
+      <div class="form-group">
+        <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="email" placeholder="Email Address">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" formControlName="password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block custom" (click)="registerUser()">Create Account</button>
+    </form>
+  <div class="row" *ngIf="registerSuccess">
+    <button type="button" class="btn btn-primary custom" (click)="modalRef.hide(); openLoginModal()">
+      OK
+    </button>
+  </div>
 </div>

@@ -19,7 +19,7 @@
       <a class="nav-link sign-in-button" (click)="openRegisterModal()">New Account</a>
     </li>
     <li class="nav-item" *ngIf="loggedIn">
-      <a class="nav-link menu-link">{{currentUser.user.first_name}} {{currentUser.user.last_name}} <span><i class="fas fa-user-circle"></i></span></a>
+      <a class="nav-link menu-link" (click)="openProfileModal()">{{currentUser.user.first_name}} {{currentUser.user.last_name}} <span><i class="fas fa-1x fa-user-circle"></i></span></a>
     </li>
   </ul>
 </nav>

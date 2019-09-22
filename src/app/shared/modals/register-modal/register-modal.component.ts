@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../core/auth/services/auth.service';
-import {BsModalRef} from 'ngx-bootstrap';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import {LoginModalComponent} from '../login-modal/login-modal.component';
 
 @Component({
   selector: 'app-register-modal',
@@ -9,9 +10,9 @@ import {BsModalRef} from 'ngx-bootstrap';
   styleUrls: ['./register-modal.component.scss']
 })
 export class RegisterModalComponent implements OnInit {
-  modalRef: BsModalRef;
+  registerSuccess = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private modalRef: BsModalRef, private modalService: BsModalService) { }
 
   registerForm = new FormGroup({
     first_name: new FormControl(''),
@@ -24,8 +25,13 @@ export class RegisterModalComponent implements OnInit {
   ngOnInit() {
   }
 
+  openLoginModal() {
+    this.modalRef = this.modalService.show(LoginModalComponent, Object.assign({}, { class: 'modal-dialog-centered' }));
+  }
+
   registerUser() {
     this.authService.register(this.registerForm.value).subscribe(data => {
+      this.registerSuccess = true;
     }, error => {
     });
   }

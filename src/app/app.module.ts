@@ -11,6 +11,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {UrlInterceptor} from './core/auth/url.interceptor';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {UrlInterceptor} from './core/auth/url.interceptor';
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
+    AlertModule.forRoot(),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: UrlInterceptor, multi: true }],
   bootstrap: [AppComponent]
