@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../../core/auth/services/auth.service';
 import {UserService, UserSightingService} from '../../../generated/api/services';
 import {BsModalRef} from 'ngx-bootstrap';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile-modal',
@@ -20,7 +19,6 @@ export class ProfileModalComponent implements OnInit {
     private userService: UserService,
     private modalRef: BsModalRef,
     private userSightingService: UserSightingService,
-    private router: Router
   ) { }
 
   ngOnInit() {
@@ -42,6 +40,6 @@ export class ProfileModalComponent implements OnInit {
 
   logOut() {
     this.authService.logout();
-    this.router.navigateByUrl('/homepage');
+    parent.document.location.reload();
   }
 }

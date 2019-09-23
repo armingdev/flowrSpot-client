@@ -1,10 +1,11 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {AuthService} from '../../../core/auth/services/auth.service';
 import {User} from '../../../generated/api/models/user';
 import {LoginModalComponent} from '../../modals/login-modal/login-modal.component';
 import {RegisterModalComponent} from '../../modals/register-modal/register-modal.component';
 import {ProfileModalComponent} from '../../modals/profile-modal/profile-modal.component';
+import {AuthDataService} from '../../../core/auth/services/auth-data.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,10 @@ import {ProfileModalComponent} from '../../modals/profile-modal/profile-modal.co
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  loggedIn: boolean = this.authService.isLogged;
   currentUser: User;
   modalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService, private authService: AuthService) {}
+  constructor(private modalService: BsModalService, private authService: AuthService, private authDataService: AuthDataService) {}
 
   openLoginModal() {
     this.modalRef = this.modalService.show(LoginModalComponent, Object.assign({}, { class: 'modal-dialog-centered' }));
@@ -34,9 +34,9 @@ export class HeaderComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
   }
   ngOnInit() {
-    if (this.loggedIn) {
+    this.authDataService.authData.subscribe(x => {
       this.getCurrentUser();
-    }
+    });
   }
 
 }

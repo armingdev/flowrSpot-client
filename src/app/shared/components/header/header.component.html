@@ -12,13 +12,13 @@
     <li class="nav-item">
       <a class="nav-link menu-link" routerLink="/favorites">Favorites</a>
     </li>
-    <li class="nav-item" *ngIf="!loggedIn">
+    <li class="nav-item" *ngIf="!currentUser">
       <a class="nav-link login-button" (click)="openLoginModal()">Login</a>
     </li>
-    <li class="nav-item" *ngIf="!loggedIn">
+    <li class="nav-item" *ngIf="!currentUser">
       <a class="nav-link sign-in-button" (click)="openRegisterModal()">New Account</a>
     </li>
-    <li class="nav-item" *ngIf="loggedIn">
+    <li class="nav-item" *ngIf="currentUser">
       <a class="nav-link menu-link" (click)="openProfileModal()">{{currentUser.user.first_name}} {{currentUser.user.last_name}} <span><i class="fas fa-1x fa-user-circle"></i></span></a>
     </li>
   </ul>

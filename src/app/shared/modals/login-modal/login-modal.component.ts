@@ -11,7 +11,7 @@ import {ProfileModalComponent} from '../profile-modal/profile-modal.component';
 })
 export class LoginModalComponent implements OnInit {
   loginSuccess = false;
-  loginError;
+  loginError = false;
 
   constructor(private modalService: BsModalService, private authService: AuthService, private modalRef: BsModalRef) {}
 
@@ -26,6 +26,7 @@ export class LoginModalComponent implements OnInit {
   logIn() {
     this.authService.login(this.loginForm.value).subscribe(data => {
       this.loginSuccess = true;
+      this.loginError = false;
     }, error => {
       this.loginError = error.error.error;
     });

@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import {tap} from 'rxjs/operators';
 import {UserService} from '../../../generated/api/services';
+import {AuthDataService} from './auth-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private authDataService: AuthDataService) { }
 
   login(user: {email: string, password: string }) {
     return this.userService.postApiV1UsersLogin(user).pipe(tap(res => {
       localStorage.setItem('access_token', res.auth_token);
       this.me().subscribe(data => {
         localStorage.setItem('user', JSON.stringify(data));
+        this.authDataService.authData.next(true);
       });
     }));
   }
@@ -24,7 +26,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('access_token');
+    localStorage.clear();
   }
 
   public get isLogged(): boolean {

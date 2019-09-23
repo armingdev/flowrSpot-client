@@ -19,17 +19,17 @@
       <div class="form-group">
         <input type="password" class="form-control" formControlName="password" placeholder="Password">
       </div>
-      <button type="submit" class="btn btn-primary btn-lg btn-block custom" (click)="logIn()">Login to your Account</button>
+      <button type="submit" class="btn btn-lg btn-block custom-button" (click)="logIn()">Login to your Account</button>
     </form>
 
   <div class="row justify-content-center" *ngIf="loginSuccess">
     <div class="col-2">
-      <button type="button" class="btn btn-primary custom" (click)="modalRef.hide()">
+      <button type="button" class="btn custom-button" (click)="modalRef.hide()">
         OK
       </button>
     </div>
     <div class="col-2">
-      <button type="button" class="btn btn-primary custom" (click)="modalRef.hide(); openProfileModal()">
+      <button type="button" class="btn custom-button" (click)="modalRef.hide(); openProfileModal()">
         Profile
       </button>
     </div>
